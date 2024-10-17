@@ -2,6 +2,7 @@ import React from 'react';
 import BlogCard from '@/components/SharedComponent/Blog/blogCard';
 import { getAllPosts } from "@/utils/markdown";
 
+
 const BlogList: React.FC = () => {
     const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
 
