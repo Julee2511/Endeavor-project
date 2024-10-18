@@ -3,6 +3,8 @@ import markdownToHtml from "@/utils/markdownToHtml";
 import { format } from "date-fns";
 import Image from "next/image";
 
+
+
 type Props = {
     params: { slug: string };
 };
@@ -36,6 +38,7 @@ export async function generateMetadata({ params }: Props) {
                 },
             },
         };
+
         return metadata;
     } else {
         return {
@@ -69,10 +72,6 @@ export default async function BlogHead({ params }: Props) {
         "date",
     ]);
 
-    if (!post) {
-        return <p>Post not found</p>; // Handle the case where the post is not found
-    }
-
     const content = await markdownToHtml(post.content || "");
 
     return (
@@ -83,28 +82,26 @@ export default async function BlogHead({ params }: Props) {
                         <div className="col-span-8">
                             <div className="flex flex-col sm:flex-row">
                                 <span className="text-16 text-midnight_text pr-7 border-r border-solid border-white w-fit">
-                                    {post.date ? format(new Date(post.date), "dd MMM yyyy") : "Date not available"}
+                                    {format(new Date(post.date), "dd MMM yyyy")}
                                 </span>
                                 <span className="text-16 text-midnight_text sm:pl-7 pl-0 w-fit">13 Comments</span>
                             </div>
                             <h2 className="text-midnight_text pt-7 text-40 font-bold">
-                                {post.title || "Untitled"}
+                                {post.title}
                             </h2>
                         </div>
-                        <div className="flex gap-6 col-span-4 pt-4 md:pt-0">
-                            {post.authorImage && (
-                                <Image
-                                    src={post.authorImage}
-                                    alt="Author Image"
-                                    className="rounded-full"
-                                    width={84}
-                                    height={84}
-                                    quality={100}
-                                    style={{ width: 'auto', height: 'auto' }}
-                                />
-                            )}
+                        <div className="flex  gap-6 col-span-4 pt-4 md:pt-0">
+                            <Image
+                                src={post.authorImage}
+                                alt="image"
+                                className="rounded-full"
+                                width={84}
+                                height={84}
+                                quality={100}
+                                style={{ width: 'auto', height: 'auto' }}
+                            />
                             <div>
-                                <span className="text-22 text-midnight_text">{post.author || "Unknown Author"}</span>
+                                <span className="text-22 text-midnight_text">Silicaman</span>
                                 <p className="text-xl text-midnight_text">Author</p>
                             </div>
                         </div>
