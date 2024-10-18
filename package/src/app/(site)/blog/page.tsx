@@ -1,5 +1,5 @@
 import React from "react";
-import BlogList from "@/components/Blog/BlogList";
+import BlogList from "@/components/SharedComponent/Blog";;
 import HeroSub from "@/components/SharedComponent/HeroSub";
 import Volunteer from "@/components/SharedComponent/Volunteer";
 import { Metadata } from "next";
